@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sardinia + Corsica Sailing &amp; Wellness Retreat — Women Who Explore × Sailing2Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #2B5F82;
+            --light-blue: #E8F1F5;
+            --sand: #F5F1E8;
+            --terracotta: #D4846A;
+            --gold: #c9a86a;
+            --dark: #1A2F3A;
+            --white: #FFFFFF;
+            --grey: #6B7B83;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: var(--dark);
+        }
+
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--grey);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(26,47,58,0.35), rgba(26,47,58,0.55)),
+                        url('images/hero-lavezzi.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: white;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .hero-meta {
+            display: inline-flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 600px) {
+            .hero-meta { flex-direction: column; gap: 0.5rem; padding: 1rem; }
+        }
+
+        /* Intro */
+        .intro {
+            background: var(--sand);
+            text-align: center;
+        }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .intro-text p { margin-bottom: 1.2rem; }
+
+        /* Where We Sail */
+        .route {
+            background: var(--white);
+        }
+
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .route-card {
+            background: var(--light-blue);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .route-card:hover { transform: translateY(-4px); }
+
+        .route-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .route-card-body {
+            padding: 1.2rem;
+        }
+
+        .route-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .route-card p {
+            font-size: 0.92rem;
+            color: var(--grey);
+        }
+
+        /* 7-Day Journey */
+        .journey {
+            background: var(--sand);
+        }
+
+        .day-card {
+            background: var(--white);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--blue);
+            padding: 1.6rem 2rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .day-card h3 {
+            color: var(--blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .day-card .day-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 0.4rem;
+        }
+
+        .day-card p {
+            color: var(--grey);
+            font-size: 0.95rem;
+        }
+
+        /* Your Boat */
+        .yacht {
+            background: var(--white);
+        }
+
+        .yacht-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 800px) {
+            .yacht-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        .yacht-image {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .yacht-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .yacht-options { grid-template-columns: 1fr; }
+        }
+
+        .yacht-option {
+            background: var(--light-blue);
+            padding: 1.6rem;
+            border-radius: 8px;
+        }
+
+        .yacht-option h4 {
+            font-size: 1.1rem;
+            color: var(--blue);
+            margin-bottom: 0.6rem;
+        }
+
+        .yacht-option .price {
+            font-size: 1.4rem;
+            color: var(--terracotta);
+            font-weight: 500;
+            margin: 0.6rem 0;
+        }
+
+        .yacht-option p {
+            font-size: 0.9rem;
+            color: var(--grey);
+        }
+
+        /* Excursions */
+        .excursions {
+            background: var(--light-blue);
+        }
+
+        .excursions-intro {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            color: var(--grey);
+            font-size: 1rem;
+        }
+
+        .excursion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .excursion-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(26,47,58,0.06);
+        }
+
+        .excursion-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .excursion-card-body {
+            padding: 1.2rem 1.4rem 1.4rem;
+        }
+
+        .excursion-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .excursion-card .ex-price {
+            color: var(--terracotta);
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .excursion-card p {
+            font-size: 0.9rem;
+            color: var(--grey);
+        }
+
+        /* Investment */
+        .investment {
+            background: var(--white);
+        }
+
+        .pricing-table {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--sand);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(26,47,58,0.1);
+            align-items: center;
+        }
+
+        .pricing-row.header {
+            font-weight: 600;
+            color: var(--blue);
+            border-bottom: 2px solid var(--blue);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .pricing-row.tier-row {
+            font-size: 1rem;
+        }
+
+        .pricing-row .tier-name {
+            font-weight: 500;
+        }
+
+        .pricing-row .tier-price {
+            color: var(--terracotta);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .pricing-row .tier-detail {
+            color: var(--grey);
+            font-size: 0.88rem;
+            text-align: right;
+        }
+
+        .pricing-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.92rem;
+            color: var(--grey);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .pricing-row { grid-template-columns: 1fr; gap: 0.3rem; }
+            .pricing-row .tier-price, .pricing-row .tier-detail { text-align: left; }
+        }
+
+        /* Included */
+        .included {
+            background: var(--sand);
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .included-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list h3 {
+            font-size: 1.2rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(26,47,58,0.15);
+            padding-bottom: 0.5rem;
+        }
+
+        .included-list li {
+            padding: 0.4rem 0;
+            color: var(--dark);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .included-list li::before {
+            content: '✓';
+            color: var(--terracotta);
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+            top: 0.4rem;
+        }
+
+        .not-included li::before {
+            content: '–';
+            color: var(--grey);
+        }
+
+        /* Team */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+
+        @media (max-width: 700px) {
+            .team-grid { grid-template-columns: 1fr; }
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-blue);
+            border-radius: 8px;
+        }
+
+        .team-member h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .team-member .role {
+            color: var(--terracotta);
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            font-size: 0.95rem;
+            color: var(--grey);
+            text-align: left;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(rgba(26,47,58,0.7), rgba(26,47,58,0.85)),
+                        url('images/hero-caprera.jpg') center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2, .cta .section-subtitle { color: white; }
+
+        .cta .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .cta-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cta p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2.5rem;
+            background: var(--terracotta);
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #B5694F;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.75);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--terracotta);
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-eyebrow">Women Who Explore × Sailing2Wellness</div>
+        <h1>Sardinia &amp; Corsica</h1>
+        <p class="hero-tagline">Two countries, one week. Drone-blue water, medieval cliff cities, longevity meals, and the Mediterranean's most diverse stretch of coast — sailed privately on a catamaran built for stillness.</p>
+        <div class="hero-meta">
+            <span>7 NIGHTS</span>
+            <span>2028 SEASON</span>
+            <span>UP TO 20 GUESTS · FLOTILLA OPTIONAL</span>
+        </div>
+    </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+    <div class="container">
+        <div class="intro-text">
+            <p>A week that starts in Italy and ends in France without ever boarding a plane. Sardinia's Costa Smeralda and the Maddalena archipelago on one half — Corsica's medieval Bonifacio and the Lavezzi islands on the other.</p>
+            <p>Slow mornings. Soft anchorages. Local food. Yoga on the bow at sunrise, Blue Zone cooking ashore, a saltwater spa overlooking Caprera, and the kind of evening that runs late on its own.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHERE WE SAIL -->
+<section class="route">
+    <div class="container">
+        <p class="section-subtitle">Where We Sail</p>
+        <h2 class="section-title">A route built around the rhythm</h2>
+
+        <div class="route-grid">
+            <div class="route-card">
+                <img src="images/anchor-golfo-aranci.jpg" alt="Golfo Aranci">
+                <div class="route-card-body">
+                    <h3>Golfo Aranci</h3>
+                    <p>A sheltered cove on the north-east tip of Sardinia. The chef opens the week here — dinner at anchor, only the boat creaking against the swell.</p>
+                </div>
+            </div>
+            <div class="route-card">
+                <img src="images/anchor-cannigione.jpg" alt="Cannigione">
+                <div class="route-card-body">
+                    <h3>Cannigione</h3>
+                    <p>A small fishing town tucked into the Bay of Arzachena. Dinner ashore — fresh fish, the kind of evening that runs late on its own.</p>
+                </div>
+            </div>
+            <div class="route-card">
+                <img src="images/anchor-bonifacio.jpg" alt="Bonifacio">
+                <div class="route-card-body">
+                    <h3>Bonifacio (Corsica)</h3>
+                    <p>One of the most dramatic marina entrances in the world. Limestone cliffs, a medieval citadel, the cliff city told properly by a local guide.</p>
+                </div>
+            </div>
+            <div class="route-card">
+                <img src="images/anchor-lavezzi.jpg" alt="Lavezzi">
+                <div class="route-card-body">
+                    <h3>Lavezzi Islands</h3>
+                    <p>Granite formations, white-sand coves, the best snorkel cove of the week. Stop here on the way back from Corsica.</p>
+                </div>
+            </div>
+            <div class="route-card">
+                <img src="images/anchor-spargi.jpg" alt="Spargi">
+                <div class="route-card-body">
+                    <h3>Spargi</h3>
+                    <p>Small uninhabited island in the Maddalena archipelago, ringed with white-sand coves. Morning yoga on the beach as the bay starts to wake.</p>
+                </div>
+            </div>
+            <div class="route-card">
+                <img src="images/anchor-caprera.jpg" alt="Caprera">
+                <div class="route-card-body">
+                    <h3>Caprera</h3>
+                    <p>The wildest island in the archipelago, a nature reserve with no roads to speak of. Chef-led farewell feast at anchor, sun setting pink over granite.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7-DAY JOURNEY -->
+<section class="journey">
+    <div class="container">
+        <p class="section-subtitle">Your 7-Day Journey</p>
+        <h2 class="section-title">From Porto Rotondo, into the Mediterranean</h2>
+
+        <div style="margin-top: 3rem;">
+            <div class="day-card">
+                <span class="day-label">Day 1 · Saturday</span>
+                <h3>Boarding &amp; Golfo Aranci</h3>
+                <p>Embark Porto Rotondo marina (25 minutes from Olbia airport). Sail north to Golfo Aranci for the first night at anchor. Chef opens the week with dinner on board, stargazing on the bow.</p>
+            </div>
+            <div class="day-card">
+                <span class="day-label">Day 2 · Sunday</span>
+                <h3>Liscia di Vacca &amp; Costa Smeralda</h3>
+                <p>Morning yoga on a quiet beach. Sail down the Costa Smeralda to a private anchorage off Liscia di Vacca. Dinner ashore in Porto Cervo or chef on board — your call.</p>
+            </div>
+            <div class="day-card">
+                <span class="day-label">Day 3 · Monday</span>
+                <h3>Capo d'Orso Spa &amp; Cannigione</h3>
+                <p>Morning sail to Capo d'Orso. Outdoor saltwater pools and a treatment of choice at the Thalasso resort, lunch on the cliff terrace. Evening sail to Cannigione for a slow dinner ashore.</p>
+            </div>
+            <div class="day-card">
+                <span class="day-label">Day 4 · Tuesday</span>
+                <h3>Cross the Strait — Bonifacio</h3>
+                <p>Cross the Strait of Bonifacio into French Corsica. Arrive Bonifacio mid-afternoon. Walking tour of the medieval citadel with a local guide, dinner at Da Passano (modern Corsican wine bar).</p>
+            </div>
+            <div class="day-card">
+                <span class="day-label">Day 5 · Wednesday</span>
+                <h3>Lavezzi &amp; back to Maddalena</h3>
+                <p>Morning swim and snorkel at Lavezzi's granite coves. Sail back across the strait, anchor in the Maddalena archipelago. Dinner ashore at the marina town.</p>
+            </div>
+            <div class="day-card">
+                <span class="day-label">Day 6 · Thursday</span>
+                <h3>Spargi &amp; Caprera bay</h3>
+                <p>Sunrise yoga at Spargi. Slow day exploring the archipelago's quieter coves. End the day at anchor in a Caprera bay — chef cooks the farewell feast as the sun sets pink over the rocks.</p>
+            </div>
+            <div class="day-card">
+                <span class="day-label">Day 7 · Friday</span>
+                <h3>Caprera hike &amp; sail home</h3>
+                <p>Morning hike on Caprera's wild trails to a viewpoint over the bay. Optional Sardinian vineyard tasting on the return. Sail south back to Porto Rotondo. Last night on the boat, off by Saturday morning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- YOUR BOAT -->
+<section class="yacht">
+    <div class="container">
+        <p class="section-subtitle">Your Home on the Water</p>
+        <h2 class="section-title">Two boat options — pick the one that fits your group</h2>
+
+        <div class="yacht-grid">
+            <div>
+                <img class="yacht-image" src="images/hero-bali.jpg" alt="Bali 5.4 catamaran">
+            </div>
+            <div>
+                <img class="yacht-image" src="images/flybridge.jpg" alt="Flybridge with jacuzzi">
+            </div>
+        </div>
+
+        <div class="yacht-options">
+            <div class="yacht-option">
+                <h4>Bali 5.4 — the spacious option</h4>
+                <p class="price">Up to 10 guests · 4 doubles + 1 twin + 1 bunk</p>
+                <p>54-foot catamaran with flybridge jacuzzi, oversized forward lounge, all-ensuite cabins. The most comfortable boat in the Mediterranean charter market right now. Best for groups that want premium space and the women-only / mixed split flexibility.</p>
+            </div>
+            <div class="yacht-option">
+                <h4>Lagoon 46 — the intimate option</h4>
+                <p class="price">Up to 8 guests · 4 identical doubles, all ensuite</p>
+                <p>46-foot catamaran with four identical en-suite cabins — no hierarchy, no twin / bunk compromises, the cleanest "everyone gets the same room" setup. Best for tighter, more intimate groups.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem; padding: 1.5rem; background: var(--sand); border-radius: 8px;">
+            <p style="font-size: 1rem; color: var(--dark);">
+                <strong>Flotilla option:</strong> Run two boats side-by-side for 16-20 guests across both — natural women-only / co-ed split, two price tiers in one trip, same week, same route.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- EXCURSIONS -->
+<section class="excursions">
+    <div class="container">
+        <p class="section-subtitle">Excursions</p>
+        <h2 class="section-title">Optional add-ons, billed per guest</h2>
+        <p class="excursions-intro">All excursions sit on top of the base trip — guests opt in to whichever fits their week. Prices are pass-through, no markup. Caprera hike included in the base trip.</p>
+
+        <div class="excursion-grid">
+            <div class="excursion-card">
+                <img src="images/excursion-spa.jpg" alt="Capo d'Orso Thalasso spa">
+                <div class="excursion-card-body">
+                    <h4>Capo d'Orso Thalasso Spa</h4>
+                    <p class="ex-price">€180–200 pp</p>
+                    <p>Half-day at the Thalasso resort — outdoor saltwater pools cascading toward Caprera, choice of essential-oil massage, lunch on the cliff terrace.</p>
+                </div>
+            </div>
+            <div class="excursion-card">
+                <img src="images/excursion-bonifacio.jpg" alt="Bonifacio walking tour">
+                <div class="excursion-card-body">
+                    <h4>Bonifacio Walking Tour</h4>
+                    <p class="ex-price">€280 group total · split per guest</p>
+                    <p>Private local guide, 1.5 hours through the medieval citadel — limestone cliffs, the cemetery (one of the most beautiful in the world), the staircase to the water.</p>
+                </div>
+            </div>
+            <div class="excursion-card">
+                <img src="images/excursion-vineyard.jpg" alt="Sardinian vineyard">
+                <div class="excursion-card-body">
+                    <h4>Sardinian Vineyard Tasting</h4>
+                    <p class="ex-price">€85 pp · taxi included</p>
+                    <p>Family vineyard near Olbia — cliffside tasting paired with local cheeses and meats, small petting zoo on site. Easy add-on on the return day.</p>
+                </div>
+            </div>
+            <div class="excursion-card">
+                <img src="images/excursion-bluezone.jpg" alt="Blue Zone cooking workshop">
+                <div class="excursion-card-body">
+                    <h4>Blue Zone Cooking Workshop</h4>
+                    <p class="ex-price">€185 pp · all-inclusive</p>
+                    <p>Full-day in Sardinia's longevity region. Hands-on pasta making with a local family, farm lunch, taxi transfers from the marina included.</p>
+                </div>
+            </div>
+            <div class="excursion-card">
+                <img src="images/hike.jpg" alt="Caprera hike">
+                <div class="excursion-card-body">
+                    <h4>Caprera Guided Hike</h4>
+                    <p class="ex-price">Included in charter</p>
+                    <p>Guided hike on the wildest island in the Maddalena archipelago. Wild flora, granite ridges, viewpoints over the bay — a quiet, simple morning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="investment">
+    <div class="container">
+        <p class="section-subtitle">Investment</p>
+        <h2 class="section-title">Per-guest pricing, all-in</h2>
+
+        <div class="pricing-table">
+            <div class="pricing-row header">
+                <span>Boat / configuration</span>
+                <span style="text-align: right;">Per guest</span>
+                <span style="text-align: right;">Group cap</span>
+            </div>
+            <div class="pricing-row tier-row">
+                <span class="tier-name">Lagoon 46 — single boat</span>
+                <span class="tier-price">~$3,050</span>
+                <span class="tier-detail">8 guests</span>
+            </div>
+            <div class="pricing-row tier-row">
+                <span class="tier-name">Bali 5.4 — single boat</span>
+                <span class="tier-price">~$3,200</span>
+                <span class="tier-detail">10 guests</span>
+            </div>
+            <div class="pricing-row tier-row">
+                <span class="tier-name">Flotilla · 2× Lagoon 46</span>
+                <span class="tier-price">~$3,050</span>
+                <span class="tier-detail">16 guests</span>
+            </div>
+            <div class="pricing-row tier-row">
+                <span class="tier-name">Flotilla · Bali 5.4 + Lagoon 46 (mixed)</span>
+                <span class="tier-price">~$3,140</span>
+                <span class="tier-detail">18 guests</span>
+            </div>
+            <div class="pricing-row tier-row">
+                <span class="tier-name">Flotilla · 2× Bali 5.4</span>
+                <span class="tier-price">~$3,200</span>
+                <span class="tier-detail">20 guests</span>
+            </div>
+
+            <p class="pricing-note">
+                Prices include the charter, captain, chef, breakfast and lunch daily, fuel, marina fees, snorkel sets, paddle boards, yoga mats, and final cleaning.
+                <br><br>
+                Excursions (above), dinners ashore, alcohol, and flights are not included. Shoulder-season pricing — early July or early September 2028 recommended.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="included">
+    <div class="container">
+        <p class="section-subtitle">What's Included</p>
+        <h2 class="section-title">Everything that matters, on the boat</h2>
+
+        <div class="included-grid">
+            <div>
+                <ul class="included-list">
+                    <h3>Accommodation &amp; Crew</h3>
+                    <li>7 nights on a private catamaran</li>
+                    <li>Captain (RYA Yachtmaster)</li>
+                    <li>On-board chef</li>
+                    <li>Bedding and bath towels</li>
+                    <li>Final cleaning</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="included-list">
+                    <h3>Meals &amp; Drinks</h3>
+                    <li>Breakfast and lunch daily, made on board</li>
+                    <li>Paired wines with on-board lunches</li>
+                    <li>Coffee, tea, juices, soft drinks (unlimited)</li>
+                    <li>Filtered drinking water</li>
+                    <li>Healthy snacks between meals</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="included-list">
+                    <h3>Wellness &amp; Activities</h3>
+                    <li>Daily yoga slots on beaches and decks</li>
+                    <li>Snorkel sets for full guest count</li>
+                    <li>2 paddle boards (option to upgrade to 4)</li>
+                    <li>Yoga mats and blocks</li>
+                    <li>Caprera guided hike</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="included-list not-included">
+                    <h3>Not Included</h3>
+                    <li>Flights and airport transfers</li>
+                    <li>Travel insurance</li>
+                    <li>Dinners ashore</li>
+                    <li>Alcohol beyond paired lunch wines</li>
+                    <li>Optional excursions (separate menu above)</li>
+                    <li>Crew gratuities (~10% of charter)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+    <div class="container">
+        <p class="section-subtitle">Meet the Team</p>
+        <h2 class="section-title">Two operators, one trip</h2>
+
+        <div class="team-grid">
+            <div class="team-member">
+                <h3>Lindsey Egan</h3>
+                <p class="role">Host · Women Who Explore</p>
+                <p>Lindsey has built Women Who Explore into a community of 700+ women travellers since acquiring the company in 2020. With 200 ambassadors across the US and Canada and a track record of sold-out trips from Croatia to the Maldives to Egypt, she curates the trips her community actually shows up for.</p>
+            </div>
+            <div class="team-member">
+                <h3>Vincent Braakman</h3>
+                <p class="role">Captain · Sailing2Wellness</p>
+                <p>RYA Yachtmaster, four years running curated wellness sailing weeks across Sardinia, Corsica, Croatia, Greece, and Turkey. Vincent skippers the boat and shapes the on-the-water experience — the route, the chef, the rhythm of each day.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <p class="section-subtitle">Ready to Begin Your Journey?</p>
+            <h2 class="section-title">2028 spots open soon</h2>
+            <p>Express interest below and Lindsey will be in touch with the next steps for the alumni group launch.</p>
+            <a class="cta-button" href="mailto:lindseyegan@womenwhoexplore.com?subject=Sardinia%20%2B%20Corsica%20Sailing%20Retreat%202028">Express Interest</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Operated by <a href="https://sailing2wellness.com" target="_blank" rel="noopener">Sailing2Wellness</a> · A retreat by <a href="https://womenwhoexplore.com" target="_blank" rel="noopener">Women Who Explore</a></p>
+</footer>
+
+</body>
+</html>
