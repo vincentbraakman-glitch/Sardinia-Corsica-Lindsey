@@ -271,6 +271,142 @@
             color: var(--grey);
         }
 
+        /* Boat tabs + slider */
+        .boat-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 2.5rem 0 0;
+            border-bottom: 1px solid #e0d8c8;
+        }
+
+        .boat-tab {
+            background: transparent;
+            border: 0;
+            padding: 1rem 2rem;
+            font-family: inherit;
+            font-size: 1.05rem;
+            color: var(--grey);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .boat-tab:hover { color: var(--blue); }
+
+        .boat-tab.active {
+            color: var(--blue);
+            border-bottom-color: var(--terracotta);
+            font-weight: 500;
+        }
+
+        .boat-tab .badge {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--terracotta);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .boat-panel {
+            display: none;
+            margin-top: 2.5rem;
+        }
+        .boat-panel.active { display: block; }
+
+        .boat-detail-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 800px) {
+            .boat-detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .slider {
+            position: relative;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .slider-slide {
+            flex: 0 0 100%;
+            height: 100%;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.92);
+            border: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 22px;
+            color: var(--blue);
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        .slider-arrow:hover { background: white; transform: translateY(-50%) scale(1.05); }
+        .slider-arrow.prev { left: 14px; }
+        .slider-arrow.next { right: 14px; }
+
+        .slider-thumbs {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .slider-thumb {
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            opacity: 0.55;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .slider-thumb:hover { opacity: 0.85; }
+
+        .slider-thumb.active {
+            opacity: 1;
+            border-color: var(--terracotta);
+        }
+
+        .slider-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         /* Excursions */
         .excursions {
             background: var(--light-blue);
@@ -712,31 +848,92 @@
         <p class="section-subtitle">Your Home on the Water</p>
         <h2 class="section-title">Two boat options — pick the one that fits your group</h2>
 
-        <div class="yacht-grid">
-            <div>
-                <img class="yacht-image" src="images/hero-bali.jpg" alt="Bali 5.4 catamaran">
-            </div>
-            <div>
-                <img class="yacht-image" src="images/flybridge.jpg" alt="Flybridge with jacuzzi">
+        <div class="boat-tabs">
+            <button class="boat-tab active" data-boat="bali" onclick="switchBoat('bali')">
+                Bali 5.4
+                <span class="badge">Most space</span>
+            </button>
+            <button class="boat-tab" data-boat="lagoon" onclick="switchBoat('lagoon')">
+                Lagoon 46
+                <span class="badge">Most intimate</span>
+            </button>
+        </div>
+
+        <!-- BALI 5.4 PANEL -->
+        <div class="boat-panel active" id="boat-bali">
+            <div class="boat-detail-grid">
+                <div>
+                    <div class="slider" id="slider-bali">
+                        <div class="slider-track">
+                            <div class="slider-slide"><img src="images/hero-bali.jpg" alt="Bali 5.4 catamaran"></div>
+                            <div class="slider-slide"><img src="images/flybridge.jpg" alt="Flybridge with jacuzzi"></div>
+                            <div class="slider-slide"><img src="images/bow-lounge.jpg" alt="Forward bow lounge"></div>
+                            <div class="slider-slide"><img src="images/cabin-double.jpg" alt="Double ensuite cabin"></div>
+                            <div class="slider-slide"><img src="images/cabin-twin.jpg" alt="Twin cabin"></div>
+                            <div class="slider-slide"><img src="images/bali-layout.jpg" alt="Bali 5.4 layout plan"></div>
+                        </div>
+                        <button class="slider-arrow prev" onclick="slide('bali', -1)" aria-label="Previous">‹</button>
+                        <button class="slider-arrow next" onclick="slide('bali', 1)" aria-label="Next">›</button>
+                    </div>
+                    <div class="slider-thumbs" id="thumbs-bali">
+                        <div class="slider-thumb active" onclick="goTo('bali', 0)"><img src="images/hero-bali.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('bali', 1)"><img src="images/flybridge.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('bali', 2)"><img src="images/bow-lounge.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('bali', 3)"><img src="images/cabin-double.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('bali', 4)"><img src="images/cabin-twin.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('bali', 5)"><img src="images/bali-layout.jpg" alt=""></div>
+                    </div>
+                </div>
+                <div class="yacht-option" style="margin-top: 0;">
+                    <h4>Bali 5.4 — the spacious option</h4>
+                    <p class="price">Up to 10 guests · 4 doubles + 1 twin + 1 bunk</p>
+                    <p>54-foot catamaran with flybridge jacuzzi, oversized forward lounge, all-ensuite double cabins. The most comfortable boat in the Mediterranean charter market right now. Best for groups that want premium space and the women-only / mixed split flexibility.</p>
+                    <p style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #e0d8c8; font-size: 0.9rem; color: var(--grey);">
+                        <strong style="color: var(--blue);">Charter:</strong> €25,000 · first week of September 2028
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="yacht-options">
-            <div class="yacht-option">
-                <h4>Bali 5.4 — the spacious option</h4>
-                <p class="price">Up to 10 guests · 4 doubles + 1 twin + 1 bunk</p>
-                <p>54-foot catamaran with flybridge jacuzzi, oversized forward lounge, all-ensuite cabins. The most comfortable boat in the Mediterranean charter market right now. Best for groups that want premium space and the women-only / mixed split flexibility.</p>
-            </div>
-            <div class="yacht-option">
-                <h4>Lagoon 46 — the intimate option</h4>
-                <p class="price">Up to 8 guests · 4 identical doubles, all ensuite</p>
-                <p>46-foot catamaran with four identical en-suite cabins — no hierarchy, no twin / bunk compromises, the cleanest "everyone gets the same room" setup. Best for tighter, more intimate groups.</p>
+        <!-- LAGOON 46 PANEL -->
+        <div class="boat-panel" id="boat-lagoon">
+            <div class="boat-detail-grid">
+                <div>
+                    <div class="slider" id="slider-lagoon">
+                        <div class="slider-track">
+                            <div class="slider-slide"><img src="images/lagoon46-hero.jpg" alt="Lagoon 46 under sail"></div>
+                            <div class="slider-slide"><img src="images/lagoon46-saloon.jpg" alt="Saloon"></div>
+                            <div class="slider-slide"><img src="images/lagoon46-bow.jpg" alt="Bow lounge"></div>
+                            <div class="slider-slide"><img src="images/lagoon46-cabin.jpg" alt="Master cabin"></div>
+                            <div class="slider-slide"><img src="images/lagoon46-flybridge.jpg" alt="Flybridge"></div>
+                            <div class="slider-slide"><img src="images/lagoon46-layout.jpg" alt="Lagoon 46 layout plan"></div>
+                        </div>
+                        <button class="slider-arrow prev" onclick="slide('lagoon', -1)" aria-label="Previous">‹</button>
+                        <button class="slider-arrow next" onclick="slide('lagoon', 1)" aria-label="Next">›</button>
+                    </div>
+                    <div class="slider-thumbs" id="thumbs-lagoon">
+                        <div class="slider-thumb active" onclick="goTo('lagoon', 0)"><img src="images/lagoon46-hero.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('lagoon', 1)"><img src="images/lagoon46-saloon.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('lagoon', 2)"><img src="images/lagoon46-bow.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('lagoon', 3)"><img src="images/lagoon46-cabin.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('lagoon', 4)"><img src="images/lagoon46-flybridge.jpg" alt=""></div>
+                        <div class="slider-thumb" onclick="goTo('lagoon', 5)"><img src="images/lagoon46-layout.jpg" alt=""></div>
+                    </div>
+                </div>
+                <div class="yacht-option" style="margin-top: 0;">
+                    <h4>Lagoon 46 — the intimate option</h4>
+                    <p class="price">Up to 8 guests · 4 identical double cabins, all ensuite</p>
+                    <p>46-foot catamaran with four identical en-suite double cabins — no hierarchy, no twin/bunk compromises, the cleanest "everyone gets the same room" setup. Best for tighter, more intimate groups where everyone wants the same experience.</p>
+                    <p style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #e0d8c8; font-size: 0.9rem; color: var(--grey);">
+                        <strong style="color: var(--blue);">Charter:</strong> €19,000 · first week of September 2028
+                    </p>
+                </div>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 2.5rem; padding: 1.5rem; background: var(--sand); border-radius: 8px;">
             <p style="font-size: 1rem; color: var(--dark);">
-                <strong>Flotilla option:</strong> Run two boats side-by-side for 16-20 guests across both — natural women-only / co-ed split, two price tiers in one trip, same week, same route.
+                <strong>Flotilla option:</strong> Run two boats side-by-side for 16–20 guests across both — natural women-only / co-ed split, two price tiers in one trip, same week, same route.
             </p>
         </div>
     </div>
@@ -968,6 +1165,56 @@
 <footer>
     <p>Operated by <a href="https://sailing2wellness.com" target="_blank" rel="noopener">Sailing2Wellness</a> · A retreat by <a href="https://womenwhoexplore.com" target="_blank" rel="noopener">Women Who Explore</a></p>
 </footer>
+
+<script>
+    const sliderState = { bali: 0, lagoon: 0 };
+    const slideCount = 6;
+
+    function switchBoat(boat) {
+        document.querySelectorAll('.boat-tab').forEach(t => {
+            t.classList.toggle('active', t.dataset.boat === boat);
+        });
+        document.querySelectorAll('.boat-panel').forEach(p => {
+            p.classList.toggle('active', p.id === 'boat-' + boat);
+        });
+    }
+
+    function goTo(boat, idx) {
+        sliderState[boat] = idx;
+        const track = document.querySelector('#slider-' + boat + ' .slider-track');
+        if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        document.querySelectorAll('#thumbs-' + boat + ' .slider-thumb').forEach((t, i) => {
+            t.classList.toggle('active', i === idx);
+        });
+    }
+
+    function slide(boat, dir) {
+        let next = sliderState[boat] + dir;
+        if (next < 0) next = slideCount - 1;
+        if (next >= slideCount) next = 0;
+        goTo(boat, next);
+    }
+
+    // Keyboard arrows when a boat panel is in view
+    document.addEventListener('keydown', (e) => {
+        const activeBoat = document.querySelector('.boat-panel.active');
+        if (!activeBoat) return;
+        const boat = activeBoat.id.replace('boat-', '');
+        if (e.key === 'ArrowRight') slide(boat, 1);
+        if (e.key === 'ArrowLeft') slide(boat, -1);
+    });
+
+    // Touch swipe support
+    document.querySelectorAll('.slider').forEach(s => {
+        let startX = 0;
+        s.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+        s.addEventListener('touchend', (e) => {
+            const diff = e.changedTouches[0].clientX - startX;
+            const boat = s.id.replace('slider-', '');
+            if (Math.abs(diff) > 50) slide(boat, diff > 0 ? -1 : 1);
+        }, { passive: true });
+    });
+</script>
 
 </body>
 </html>
