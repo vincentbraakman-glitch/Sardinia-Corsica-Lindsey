@@ -330,7 +330,7 @@
         }
 
         .pricing-table {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             background: var(--sand);
             padding: 2.5rem;
@@ -339,53 +339,96 @@
 
         .pricing-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 1rem;
+            grid-template-columns: 1.8fr 1fr 0.7fr 1fr 1fr 1.1fr;
+            gap: 0.8rem;
             padding: 0.9rem 0;
-            border-bottom: 1px solid rgba(26,47,58,0.1);
+            border-bottom: 1px solid rgba(26,47,58,0.12);
             align-items: center;
+            font-size: 0.92rem;
         }
 
         .pricing-row.header {
             font-weight: 600;
             color: var(--blue);
             border-bottom: 2px solid var(--blue);
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
         .pricing-row.tier-row {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .pricing-row .tier-name {
             font-weight: 500;
+            color: var(--dark);
         }
 
-        .pricing-row .tier-price {
-            color: var(--terracotta);
-            font-weight: 500;
-            text-align: right;
-        }
-
-        .pricing-row .tier-detail {
+        .pricing-row .tier-charter,
+        .pricing-row .tier-guests,
+        .pricing-row .tier-cost-pp,
+        .pricing-row .tier-margin {
             color: var(--grey);
-            font-size: 0.88rem;
             text-align: right;
+        }
+
+        .pricing-row .tier-margin {
+            color: var(--terracotta);
+        }
+
+        .pricing-row .tier-sale {
+            color: var(--terracotta);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .pricing-row.header span {
+            text-align: right;
+        }
+        .pricing-row.header span:first-child {
+            text-align: left;
         }
 
         .pricing-note {
             margin-top: 2rem;
-            text-align: center;
+            text-align: left;
             font-size: 0.92rem;
             color: var(--grey);
             line-height: 1.7;
         }
 
-        @media (max-width: 600px) {
-            .pricing-row { grid-template-columns: 1fr; gap: 0.3rem; }
-            .pricing-row .tier-price, .pricing-row .tier-detail { text-align: left; }
+        .pricing-explainer {
+            background: var(--white);
+            border-left: 3px solid var(--terracotta);
+            padding: 1rem 1.4rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--dark);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .pricing-explainer strong {
+            color: var(--blue);
+        }
+
+        @media (max-width: 800px) {
+            .pricing-row {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+                padding: 1rem 0;
+            }
+            .pricing-row.header { display: none; }
+            .pricing-row .tier-charter::before { content: "Charter cost: "; color: var(--grey); }
+            .pricing-row .tier-guests::before { content: "Guests: "; color: var(--grey); }
+            .pricing-row .tier-cost-pp::before { content: "Cost per guest: "; color: var(--grey); }
+            .pricing-row .tier-margin::before { content: "Your margin (15%): "; color: var(--grey); }
+            .pricing-row .tier-sale::before { content: "Sale price per guest: "; color: var(--grey); }
+            .pricing-row .tier-charter,
+            .pricing-row .tier-guests,
+            .pricing-row .tier-cost-pp,
+            .pricing-row .tier-margin,
+            .pricing-row .tier-sale { text-align: left; }
         }
 
         /* Included */
@@ -759,40 +802,63 @@
 
         <div class="pricing-table">
             <div class="pricing-row header">
-                <span>Boat / configuration</span>
-                <span style="text-align: right;">Per guest</span>
-                <span style="text-align: right;">Group cap</span>
+                <span>Configuration</span>
+                <span>Charter cost</span>
+                <span>Guests</span>
+                <span>Cost / guest</span>
+                <span>+ 15% margin</span>
+                <span>Sale / guest</span>
             </div>
+
             <div class="pricing-row tier-row">
                 <span class="tier-name">Lagoon 46 — single boat</span>
-                <span class="tier-price">~$3,050</span>
-                <span class="tier-detail">8 guests</span>
+                <span class="tier-charter">€19,000</span>
+                <span class="tier-guests">8</span>
+                <span class="tier-cost-pp">€2,375</span>
+                <span class="tier-margin">+€419</span>
+                <span class="tier-sale">€2,794 ≈ $3,050</span>
             </div>
             <div class="pricing-row tier-row">
                 <span class="tier-name">Bali 5.4 — single boat</span>
-                <span class="tier-price">~$3,200</span>
-                <span class="tier-detail">10 guests</span>
+                <span class="tier-charter">€25,000</span>
+                <span class="tier-guests">10</span>
+                <span class="tier-cost-pp">€2,500</span>
+                <span class="tier-margin">+€441</span>
+                <span class="tier-sale">€2,941 ≈ $3,200</span>
             </div>
             <div class="pricing-row tier-row">
                 <span class="tier-name">Flotilla · 2× Lagoon 46</span>
-                <span class="tier-price">~$3,050</span>
-                <span class="tier-detail">16 guests</span>
+                <span class="tier-charter">€38,000</span>
+                <span class="tier-guests">16</span>
+                <span class="tier-cost-pp">€2,375</span>
+                <span class="tier-margin">+€419</span>
+                <span class="tier-sale">€2,794 ≈ $3,050</span>
             </div>
             <div class="pricing-row tier-row">
                 <span class="tier-name">Flotilla · Bali 5.4 + Lagoon 46 (mixed)</span>
-                <span class="tier-price">~$3,140</span>
-                <span class="tier-detail">18 guests</span>
+                <span class="tier-charter">€44,000</span>
+                <span class="tier-guests">18</span>
+                <span class="tier-cost-pp">€2,444</span>
+                <span class="tier-margin">+€432</span>
+                <span class="tier-sale">€2,876 ≈ $3,140</span>
             </div>
             <div class="pricing-row tier-row">
                 <span class="tier-name">Flotilla · 2× Bali 5.4</span>
-                <span class="tier-price">~$3,200</span>
-                <span class="tier-detail">20 guests</span>
+                <span class="tier-charter">€50,000</span>
+                <span class="tier-guests">20</span>
+                <span class="tier-cost-pp">€2,500</span>
+                <span class="tier-margin">+€441</span>
+                <span class="tier-sale">€2,941 ≈ $3,200</span>
+            </div>
+
+            <div class="pricing-explainer">
+                <strong>How it works:</strong> Charter cost ÷ guests = base cost per guest. <strong>Your 15% margin</strong> sits on top of that, included in the sale price. Across all configurations the sale price stays in the <strong>~$3,050–$3,200</strong> range — comfortably under the $4,000 ceiling, with room to layer optional excursions on top.
             </div>
 
             <p class="pricing-note">
-                Prices include the charter, captain, chef, breakfast and lunch daily, fuel, marina fees, snorkel sets, paddle boards, yoga mats, and final cleaning.
+                <strong>What's included in the charter cost:</strong> the boat, captain, on-board chef, breakfast and lunch daily, fuel, marina fees, snorkel sets, paddle boards, yoga mats, and final cleaning.
                 <br><br>
-                Excursions (above), dinners ashore, alcohol, and flights are not included. Shoulder-season pricing — early July or early September 2028 recommended.
+                <strong>Not included:</strong> excursions (priced separately above), dinners ashore, alcohol beyond paired lunch wines, flights, and travel insurance. Pricing is shoulder-season (early July or early September 2028 recommended).
             </p>
         </div>
     </div>
